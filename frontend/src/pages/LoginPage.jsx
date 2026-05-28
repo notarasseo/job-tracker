@@ -33,7 +33,7 @@ const LoginPage = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'orange',
+        background: 'linear-gradient(135deg, #ff8c00 0%, #ff4500 100%)',
       }}
     >
       <Card style={{ width: 400, boxShadow: '0 8px 32px rgba(0,0,0,0.12)' }}>
