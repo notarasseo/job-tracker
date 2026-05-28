@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Button, Typography, message } from 'antd';
-import { MailOutlined, LockOutlined } from '@ant-design/icons';
+import { MailOutlined, LockOutlined, FileSearchOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { authService } from '../services/api';
 import { useAuth } from '../context/AuthContext';
@@ -72,7 +72,7 @@ const LoginPage = () => {
             marginBottom: 16,
             boxShadow: '0 8px 20px rgba(230,62,0,0.35)',
           }}>
-            <span style={{ fontSize: 28 }}>💼</span>
+            <FileSearchOutlined style={{ fontSize: 28, color: '#fff' }} />
           </div>
           <Title level={2} style={{ margin: 0, color: '#1a1a1a', fontWeight: 700 }}>
             JobTracker
