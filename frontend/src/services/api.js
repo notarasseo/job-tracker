@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const BASE = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: BASE,
 });
 
 api.interceptors.request.use((config) => {
@@ -25,15 +27,15 @@ api.interceptors.response.use(
 );
 
 export const authService = {
-  register: (data) => api.post('auth/register', data),
-  login: (data) => api.post('auth/login', data),
-  me: () => api.get('auth/me'),
+  register: (data) => api.post('/api/auth/register', data),
+  login: (data) => api.post('/api/auth/login', data),
+  me: () => api.get('/api/auth/me'),
 };
 
 export const jobService = {
-  getAll: (params) => api.get('jobs', { params }),
-  getStats: () => api.get('jobs/stats'),
-  create: (data) => api.post('jobs', data),
-  update: (id, data) => api.put(`jobs/${id}`, data),
-  delete: (id) => api.delete(`jobs/${id}`),
+  getAll: (params) => api.get('/api/jobs', { params }),
+  getStats: () => api.get('/api/jobs/stats'),
+  create: (data) => api.post('/api/jobs', data),
+  update: (id, data) => api.put(`/api/jobs/${id}`, data),
+  delete: (id) => api.delete(`/api/jobs/${id}`),
 };
