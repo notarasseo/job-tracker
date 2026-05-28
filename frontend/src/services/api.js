@@ -25,15 +25,15 @@ api.interceptors.response.use(
 );
 
 export const authService = {
-  register: (data) => api.post('/auth/register', data),
-  login: (data) => api.post('/auth/login', data),
-  me: () => api.get('/auth/me'),
+  register: (data) => api.post('auth/register', data),
+  login: (data) => api.post('auth/login', data),
+  me: () => api.get('auth/me'),
 };
 
 export const jobService = {
-  getAll: (params) => api.get('/jobs', { params }),
-  getStats: () => api.get('/jobs/stats'),
-  create: (data) => api.post('/jobs', data),
-  update: (id, data) => api.put(`/jobs/${id}`, data),
-  delete: (id) => api.delete(`/jobs/${id}`),
+  getAll: (params) => api.get('jobs', { params }),
+  getStats: () => api.get('jobs/stats'),
+  create: (data) => api.post('jobs', data),
+  update: (id, data) => api.put(`jobs/${id}`, data),
+  delete: (id) => api.delete(`jobs/${id}`),
 };
