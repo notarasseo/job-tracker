@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Typography, message } from 'antd';
+import { Form, Input, Button, Typography, message, Divider } from 'antd';
 import { MailOutlined, LockOutlined, FileSearchOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { authService } from '../services/api';
@@ -54,86 +54,99 @@ const LoginPage = () => {
       <div
         style={{
           width: 420,
-          background: 'rgba(255,255,255,0.97)',
+          background: '#fff',
           borderRadius: 20,
-          padding: '48px 40px 36px',
+          overflow: 'hidden',
           boxShadow: '0 24px 60px rgba(0,0,0,0.2)',
         }}
       >
-        {/* Logo area */}
-        <div style={{ textAlign: 'center', marginBottom: 36 }}>
+        {/* Orange header strip */}
+        <div style={{
+          background: 'linear-gradient(135deg, #ff9a3c, #e63e00)',
+          padding: '32px 40px 28px',
+          textAlign: 'center',
+        }}>
           <div style={{
-            width: 60, height: 60,
-            background: 'linear-gradient(135deg, #ff9a3c, #e63e00)',
-            borderRadius: 16,
+            width: 56, height: 56,
+            background: 'rgba(255,255,255,0.2)',
+            borderRadius: 14,
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
-            marginBottom: 16,
-            boxShadow: '0 8px 20px rgba(230,62,0,0.35)',
+            marginBottom: 14,
+            backdropFilter: 'blur(4px)',
           }}>
-            <FileSearchOutlined style={{ fontSize: 28, color: '#fff' }} />
+            <FileSearchOutlined style={{ fontSize: 26, color: '#fff' }} />
           </div>
-          <Title level={2} style={{ margin: 0, color: '#1a1a1a', fontWeight: 700 }}>
+          <Title level={2} style={{ margin: 0, color: '#fff', fontWeight: 700 }}>
             JobTracker
           </Title>
-          <Text style={{ color: '#888', fontSize: 14 }}>
-            Sign in to your account
+          <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: 14 }}>
+            Track your job search journey
           </Text>
         </div>
 
-        <Form form={form} onFinish={onFinish} layout="vertical" size="large">
-          <Form.Item
-            name="email"
-            rules={[
-              { required: true, message: 'Please enter your email' },
-              { type: 'email', message: 'Invalid email' },
-            ]}
-          >
-            <Input
-              prefix={<MailOutlined style={{ color: '#ff6000' }} />}
-              placeholder="Email address"
-              style={{ borderRadius: 10, height: 48 }}
-            />
-          </Form.Item>
+        {/* Form area */}
+        <div style={{ padding: '36px 40px 32px' }}>
+          <Text style={{ color: '#444', fontSize: 15, fontWeight: 600, display: 'block', marginBottom: 20 }}>
+            Sign in to your account
+          </Text>
 
-          <Form.Item
-            name="password"
-            rules={[{ required: true, message: 'Please enter your password' }]}
-          >
-            <Input.Password
-              prefix={<LockOutlined style={{ color: '#ff6000' }} />}
-              placeholder="Password"
-              style={{ borderRadius: 10, height: 48 }}
-            />
-          </Form.Item>
-
-          <Form.Item style={{ marginTop: 8 }}>
-            <Button
-              htmlType="submit"
-              loading={loading}
-              block
-              style={{
-                height: 50,
-                borderRadius: 10,
-                background: 'linear-gradient(135deg, #ff9a3c, #e63e00)',
-                border: 'none',
-                color: '#fff',
-                fontSize: 16,
-                fontWeight: 600,
-                boxShadow: '0 6px 20px rgba(230,62,0,0.4)',
-              }}
+          <Form form={form} onFinish={onFinish} layout="vertical" size="large">
+            <Form.Item
+              name="email"
+              rules={[
+                { required: true, message: 'Please enter your email' },
+                { type: 'email', message: 'Invalid email' },
+              ]}
             >
-              Sign In
-            </Button>
-          </Form.Item>
-        </Form>
+              <Input
+                prefix={<MailOutlined style={{ color: '#ff6000' }} />}
+                placeholder="Email address"
+                style={{ borderRadius: 10, height: 48, borderColor: '#ffe0cc' }}
+              />
+            </Form.Item>
 
-        <div style={{ textAlign: 'center', marginTop: 8 }}>
-          <Text style={{ color: '#888' }}>Don't have an account? </Text>
-          <Link to="/register" style={{ color: '#ff6000', fontWeight: 600 }}>
-            Sign up
-          </Link>
+            <Form.Item
+              name="password"
+              rules={[{ required: true, message: 'Please enter your password' }]}
+            >
+              <Input.Password
+                prefix={<LockOutlined style={{ color: '#ff6000' }} />}
+                placeholder="Password"
+                style={{ borderRadius: 10, height: 48, borderColor: '#ffe0cc' }}
+              />
+            </Form.Item>
+
+            <Form.Item style={{ marginTop: 8, marginBottom: 16 }}>
+              <Button
+                htmlType="submit"
+                loading={loading}
+                block
+                style={{
+                  height: 50,
+                  borderRadius: 10,
+                  background: 'linear-gradient(135deg, #ff9a3c, #e63e00)',
+                  border: 'none',
+                  color: '#fff',
+                  fontSize: 16,
+                  fontWeight: 600,
+                  boxShadow: '0 6px 20px rgba(230,62,0,0.35)',
+                }}
+              >
+                Sign In
+              </Button>
+            </Form.Item>
+          </Form>
+
+          <Divider style={{ borderColor: '#f5e6de', margin: '0 0 16px' }} />
+
+          <div style={{ textAlign: 'center' }}>
+            <Text style={{ color: '#999', fontSize: 14 }}>Don't have an account? </Text>
+            <Link to="/register" style={{ color: '#ff6000', fontWeight: 600, fontSize: 14 }}>
+              Sign up
+            </Link>
+          </div>
         </div>
       </div>
     </div>
